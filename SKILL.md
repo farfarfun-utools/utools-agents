@@ -9,7 +9,7 @@ description: 开发或发布 farfarfun-utools 组织的 uTools 插件时，检�
 
 ## 工作区与实现
 
-- 插件仓库放在 `/home/bingtao/workspace/github/farfarfun-utools/<仓库名>`；新建或克隆前检查同名目录及远端。`.local-backups/` 不是开发目录。共享打包工具在相邻的 `farfarfun-action/utools-devtools`，不要重新克隆到本组织。
+- 插件与配套仓库统一归档在聚合工作区 `/home/bingtao/workspace/github/farfarfun-utools/utools-dev/`（按 `plugins/`、`apps/`、`index/`、`skills/`、`tools/` 分类，见 `repos.json`；如遇旧平铺副本则在 `/home/bingtao/workspace/github/farfarfun-utools/<仓库名>`）；新建或克隆前先检查已有工作副本及远端。`.local-backups/` 不是开发目录。共享打包工具在相邻的 `farfarfun-action/utools-devtools`，不要重新克隆到本组织。
 - 一插件一仓库，通常命名 `utools-fun<功能>`，`package.json#name` 使用 `@farfarfun/utools-fun<功能>`；对用户使用稳定的中文显示名及 `FunX` 英文名。仓库名、npm 包名、显示名、uTools 搜索词各有用途，改名时分别核对。
 - 本地优先，核心操作尽量接入 uTools 主搜索框。`utools/plugin.json` 的 `features[].code`、`cmds`、文件/选中文字入口应与实际 `onPluginEnter` 路由一致；动态功能另检查 `setFeature`/`removeFeature` 的生命周期。
 - `utools/` 是插件运行目录：`plugin.json` 的 `main` 指向构建产物 `dist/index.html`，`logo`、可选 `preload` 和功能图标必须真实存在。所有插件都作为有构建步骤的前端应用，前端源码放在运行目录外，由 Vite 构建到 `utools/dist/`；只有构建后的目录可导入或打包。现有 Vue 3/TypeScript 项目沿用其技术栈，已有原生 HTML/CSS/JS 可保留业务代码并接入 Vite。需要宿主/Node 能力时通过 preload 暴露有限接口，在边界校验文件、URL 和外部数据。
