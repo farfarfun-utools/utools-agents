@@ -7,9 +7,9 @@
 | FunCalc | Vue/Vite | 620 | 有 | 无，CI 有 Playwright 截图 | 有 |
 | FunCalendar | Vue/Vite | 620 | 有 | 有 | 有 |
 | FunChat | Vue/Vite | 660 | 有 | 有 | 有 |
+| FunData | Vue/Vite | 720 | 有 | 有 | 待注册发版后补充 |
 | FunDoc | Vue/Vite | 600 | 有 | 有 | 有 |
 | FunImage | Vite/原生 JS | 720 | 有 | 有 | 有 |
-| FunJSON | Vue/Vite | 720 | 有 | 有 | 待注册发版后补充 |
 | FunLink | Vue/Vite | 558 | 有 | 有 | 有 |
 | FunOTP | Vue/Vite | 558 | 有 | 有 | 有 |
 | FunQR | Vue/Vite | 720 | 有 | 有 | 有 |
