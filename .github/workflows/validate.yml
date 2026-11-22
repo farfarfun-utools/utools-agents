@@ -1,0 +1,58 @@
+name: Validate skills
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate all skills metadata and structure
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          skills_root = Path("skills")
+          skill_dirs = sorted(p for p in skills_root.iterdir() if p.is_dir())
+          assert skill_dirs, "skills/ 目录下没有任何 Skill"
+
+          for skill_dir in skill_dirs:
+              skill_md = skill_dir / "SKILL.md"
+              assert skill_md.is_file(), f"{skill_dir}: missing SKILL.md"
+              text = skill_md.read_text(encoding="utf-8")
+              match = re.match(r"^---\nname: ([a-z0-9-]+)\ndescription: .+\n---\n", text)
+              assert match, f"{skill_dir}: invalid SKILL.md frontmatter"
+              assert match.group(1) == skill_dir.name, (
+                  f"{skill_dir}: frontmatter name {match.group(1)!r} != directory name {skill_dir.name!r}"
+              )
+              assert (skill_dir / "agents/openai.yaml").is_file(), (
+                  f"{skill_dir}: missing agents/openai.yaml"
+              )
+              print(f"ok   {skill_dir}")
+          PY
+
+      - name: Check local Markdown links
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          errors = []
+          checked = 0
+          for source in sorted(Path(".").rglob("*.md")):
+              text = source.read_text(encoding="utf-8")
+              for target in re.findall(r"\[[^]]+\]\(([^)#]+)(?:#[^)]+)?\)", text):
+                  if target.startswith(("http://", "https://", "mailto:")):
+                      continue
+                  checked += 1
+                  if not (source.parent / target).resolve().exists():
+                      errors.append(f"{source}: missing {target}")
+          assert not errors, "\n".join(errors)
+          print(f"ok   checked {checked} local links")
+          PY

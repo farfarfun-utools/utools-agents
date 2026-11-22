@@ -1,0 +1,4 @@
+interface:
+  display_name: "uTools Plugin Development"
+  short_description: "Develop, verify, screenshot and release farfarfun-utools plugins"
+  default_prompt: "Use $utools-plugin-development to create, update, audit or release farfarfun-utools uTools plugins and sync organization indexes and packages."
