@@ -21,9 +21,9 @@ description: 开发或发布 farfarfun-utools 组织的 uTools 插件时，检�
 
 ## 名称、图标与尺寸
 
-- 所有插件的品牌图标由 `farfarfun/.github/brand` 统一设计、维护和导出，它是唯一源。新插件或改品牌时先在该仓库按 `brand/README.md` 修改 `brand/gen_logos.py` 并生成素材，再同步导出图到插件仓库；不要在插件仓库另绘品牌图标，也不要直接改品牌仓库生成的 `brand/svg/`、`brand/png/`、`brand/favicon/`。
+- 所有插件的品牌图标由 `farfarfun/farfarfun-web/brand` 统一设计、维护和导出，它是唯一源。新插件或改品牌时先在该仓库按 `brand/README.md` 修改 `brand/gen_logos.py` 并生成素材，再同步导出图到插件仓库；不要在插件仓库另绘品牌图标，也不要直接改品牌仓库生成的 `brand/svg/`、`brand/png/`、`brand/favicon/`。
 - `utools/logo.png` 复制品牌仓库的 `brand/png/mark/<插件名>-256.png`：透明底、256×256 PNG。`plugin.json#logo` 指向它；不要在 `utools/` 运行目录内放置未被引用的 `logo.svg` 等源图（会被一并打进 `.upxs`）。额外功能图标按需配置并放在 `utools/`，现有 `search.png` 有 200×200 和 256×256 两种，不套用主图标尺寸。若界面页眉、favicon、`public/logo.png` 或 README 引用同一品牌，也一并核对。
-- 组织索引使用 `brand/png/mark/<插件名>-64.png`，即 64×64 PNG。品牌母版为 1024×1024；不要把 64 px 索引图拿来作插件的 256 px 图标。
+- 组织主页 README 与组织索引统一使用官网域名地址 `https://farfarfun.com/brand/png/...`（不再使用 `raw.githubusercontent.com`）：组织页眉横版组合标用 `https://farfarfun.com/brand/png/lockup{,-on-dark}/<主体>-256.png`，组织索引与总览表插件图标用 `https://farfarfun.com/brand/png/mark/<插件名>-64.png`。品牌母版为 1024×1024；不要把 64 px 索引图拿来作插件的 256 px 图标。
 - 窗口高度在 `plugin.json#pluginSetting.height` 按功能确定；当前项目为 558–720 CSS px，不能当成平台强制范围。截图通常以 800 CSS px 宽和实际窗口高度拍摄，并检查约 375 CSS px 的窄窗口；缩放倍率及最终 PNG 尺寸以项目截图脚本为准。`packages` 页面截图只认 PNG，没有统一宽高要求。
 
 ## AI / MCP 工具
