@@ -16,6 +16,7 @@
 | FunMeme | Vue/Vite | 720 | 有 | 有 | 待首次发版后登记 |
 | FunOTP | Vue/Vite | 558 | 有 | 有 | 有 |
 | FunQR | Vue/Vite | 720 | 有 | 有 | 有 |
+| FunSecret | Vue/Vite | 580 | 有 | 有 | 待首次发版后登记 |
 | FunTime | Vue/Vite | 720 | 有 | 有 | 待首次发版后登记 |
 | FunVideo | Vite/原生 JS | 720 | 有 | 有 | 有 |
 
